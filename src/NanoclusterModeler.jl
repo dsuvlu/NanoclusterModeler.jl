@@ -1,63 +1,26 @@
+Base.__precompile__(false)
+
 module NanoclusterModeler
 
-greet() = print("Hello World!")
+export Ns, c0, kplusij, kminusij, odes!
 
-export odes!
-
-# Define max # of monomers imax
-imax = 40
-
-# Define # of binding sites for clusters with n monomers up to imax
-n  = range(1, stop=imax)
-Ns = round.(Int64, 2.08.*n.^(2/3))
-
-# Define important indices for 2D array
-rows    = imax + 3
-columns = Ns[imax] + 3
-istart  = 3
-idimer  = 4
-iend    = rows - 1
-j0      = 2
-jmax    = columns - 1
-
-# Initialize 2D matrix w/rows corresponding to monomers
-# and columns corresponding to ligands
-# Indices are as follows:
-# c[1,1] = M+, c[3,2] = M, c[2,3] = L, c[3,3] = ML
-# Julia has 1-based indices therefore # of monomers = row index + 1 and
-# # of ligands = column index + 1
-c0 = zeros(Float64, rows, columns)
-c0[1,1] = 0.05
-c0[2,3] = 6.00
-
-# Define parameters
-# kplus,i,j = k*(1.0 - j/Ns,i)
-kpij = zeros(Float64, rows, columns)
-for i = idimer:iend
-    monomers = i - 2
-    for j = j0:Ns[monomers] + 2
-        ligands = j - 2
-        kpij[i,j] = 1.0 - (ligands)/Ns[monomers]
-    end
-end
-
-# kminus,i,j = k*(j/Ns,i)
-kmij = zeros(Float64, rows, columns)
-for i = idimer:iend
-    monomers = i - 2
-    for j = j0:Ns[monomers] + 2
-        ligands = j - 2
-        kmij[i,j] = (ligands)/Ns[monomers]
-    end
-end
-
-# p = (kp,     kb,     kub,    kn,     kg1,    kd1,    kg2,    kd2,    ka,     ke,     kc)
-p   = (1.0e+3, 1.0e+1, 1.0e-7, 1.0e+1, 1.0e+4, 1.0e-9, 1.0e+4, 1.0e-9, 1.0e1, 1.0e-3, 1.0e+3,
-        imax, idimer, iend, j0, jmax, Ns, kpij, kmij)
+include("Ns.jl")
+include("c0.jl")
+include("kplusij.jl")
+include("kminusij.jl")
 
 function odes!(dc, c, p, t)
     # unpack parameters
-    kp, kb, kub, kn, kg1, kd1, kg2, kd2, ka, ke, kc, imax, idimer, iend, j0, jmax, Ns, kpij, kmij = p
+    imax, Ns, kpij, kmij, kp, kb, kub, kn, kg1, kd1, kg2, kd2, ka, ke, kc  = p
+
+    # Define important indices for 2D array
+    rows    = imax + 3
+    columns = Ns[imax] + 3
+    istart  = 3
+    idimer  = 4
+    iend    = rows - 1
+    j0      = 2
+    jmax    = columns - 1
 
     # array element (1,1) is assigned to M+ or c1,0+
     dc[1,1] = -kp*c[1,1]
