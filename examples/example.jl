@@ -1,11 +1,9 @@
-#using NanoclusterModeler
+using NanoclusterModeler
 using DifferentialEquations
 using ODEInterfaceDiffEq
 using Queryverse
 using DataFrames
 using JLD2, FileIO
-
-include("../src/NanoclusterModeler.jl")
 
 # Set parameters for model
 imax = 10 # Maximum size cluster considered in model
