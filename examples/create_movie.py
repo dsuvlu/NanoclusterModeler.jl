@@ -30,12 +30,12 @@ cax2 = divider2.append_axes("right", "5%", pad="3%")
 cbar1 = np.loadtxt('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e3_kc1e3_M+005_Ns208_cbar.csv', delimiter=',', skiprows=1)
 ctot1 = np.loadtxt('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e3_kc1e3_M+005_Ns208_time.csv', usecols=9, delimiter=',', skiprows=1)
 time1 = np.loadtxt('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e3_kc1e3_M+005_Ns208_time.csv', usecols=0, delimiter=',', skiprows=1)
-Pj1   =  h5py.File('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e3_kc1e3_M+005_Ns208_prob_2D_t.jld2', 'r')
+Pj1   =  h5py.File('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e3_kc1e3_M+005_Ns208_prob_j_t.jld2', 'r')
 
 cbar2 = np.loadtxt('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e-3_kc1e3_M+005_Ns208_cbar.csv', delimiter=',', skiprows=1)
 ctot2 = np.loadtxt('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e-3_kc1e3_M+005_Ns208_time.csv', usecols=9, delimiter=',', skiprows=1)
 time2 = np.loadtxt('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e-3_kc1e3_M+005_Ns208_time.csv', usecols=0, delimiter=',', skiprows=1)
-Pj2   =  h5py.File('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e-3_kc1e3_M+005_Ns208_prob_2D_t.jld2', 'r')
+Pj2   =  h5py.File('kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e-3_kc1e3_M+005_Ns208_prob_j_t.jld2', 'r')
 
 # Define Ns, diameter D (nm), i, and j
 pref = 2.08
