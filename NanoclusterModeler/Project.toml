@@ -1,8 +1,0 @@
-[deps]
-DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
-DifferentialEquations = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
-FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
-JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
-ODEInterface = "54ca160b-1b9f-5127-a996-1867f4bc2a2c"
-ODEInterfaceDiffEq = "09606e27-ecf5-54fc-bb29-004bd9f985bf"
-Queryverse = "612083be-0b0f-5412-89c1-4e7c75506a58"
