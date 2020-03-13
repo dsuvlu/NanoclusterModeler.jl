@@ -23,7 +23,7 @@ kd1 = 1.0e-9
 kg2 = 1.0e+4
 kd2 = 1.0e-9
 ka  = 1.0e-3
-ke  = 1.0e+3
+ke  = 1.0e-3
 kc  = 1.0e+3
 odes = NanoclusterModeler.odes!
 
