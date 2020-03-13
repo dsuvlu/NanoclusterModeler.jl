@@ -6,29 +6,29 @@ using DataFrames
 using JLD2, FileIO
 
 # Set parameters for model
-imax = 10 # Maximum size cluster considered in model
+imax = 68 # Maximum size cluster considered in model
 prefactor = 2.08 # Scaling factor in Ns
 Ns = NanoclusterModeler.Ns(imax, prefactor) # Number of surface sites on the cluster
 Mplus = 0.05 # Concentration in mM
 L     = 6.00 # Concentration in mM
-c0 = NanoclusterModeler.c0(imax, Ns, Mplus, L)
-kpij = NanoclusterModeler.kplusij(imax, Ns)
-kmij = NanoclusterModeler.kminusij(imax, Ns)
+c0 = NanoclusterModeler.c0(imax, Ns, Mplus, L) # Initialize 2D matrix containing intial concentrations of M+ and L
+kpij = NanoclusterModeler.kplusij(imax, Ns) # Define 2D matrix containing fraction of free sites on surface of NCs 
+kmij = NanoclusterModeler.kminusij(imax, Ns) # Define 2D matrix containing fraction of occupied sites on surface of NCs
 kp  = 1.0e+3
-kb  = 1.0e+1
+kb  = 1.0e+5
 kub = 1.0e-7
 kn  = 1.0e+1
 kg1 = 1.0e+4
 kd1 = 1.0e-9
 kg2 = 1.0e+4
 kd2 = 1.0e-9
-ka  = 1.0e+1
-ke  = 1.0e-3
+ka  = 1.0e-3
+ke  = 1.0e+3
 kc  = 1.0e+3
 odes = NanoclusterModeler.odes!
 
 # Set file prefix for output
-file = "kp1e3_kb1e1_kn1e1_kg1e4_ka1e1_ke1e-3_kc1e3_M+005_Ns208"
+file = "kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e-3_kc1e3_M+005_Ns208"
 
 # Time is seconds
 tspan = (0.0, 1000000.0)
