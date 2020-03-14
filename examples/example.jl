@@ -23,17 +23,18 @@ kd1 = 1.0e-9
 kg2 = 1.0e+4
 kd2 = 1.0e-9
 ka  = 1.0e-3
-ke  = 1.0e-3
+ke  = 1.0e+3
 kc  = 1.0e+3
 odes = NanoclusterModeler.odes!
 
 # Set file prefix for output
-file = "kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e-3_kc1e3_M+005_Ns208"
+file = "kp1e3_kb1e5_kn1e1_kg1e4_ka1e-3_ke1e3_kc1e3_M+005_Ns208"
 
 # Time is seconds
 tspan = (0.0, 1000000.0)
 
 # Parameters being passed to ode function
+# The order in which these are stored is important
 p   = (imax, Ns, kpij, kmij,
     kp, kb, kub, kn, kg1, kd1, kg2, kd2, ka, ke, kc)
 
